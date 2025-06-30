@@ -14,44 +14,48 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Router = createBrowserRouter([
   {
+    path: "/login",
+    element: <Login />,
+  },
+
+  {
     path: "/",
     element: (
       <PrivateRoute>
-        <Layout />{" "}
+        <Layout />
       </PrivateRoute>
     ),
     children: [
       {
-        path: "/course",
+        path: "course",
         element: <Courses />,
       },
       {
-        path: "/cart",
-        element: <Cart></Cart>,
+        path: "cart",
+        element: <Cart />,
       },
       {
-        path: "/checkout",
+        path: "checkout",
         element: <Checkout />,
       },
       {
-        path: "/search",
+        path: "search",
         element: <Search />,
       },
       {
-        path: "/order-details",
+        path: "order-details",
         element: <OrderDetails />,
       },
     ],
   },
 
   {
-    path: "/login",
-    element: <Login />,
-  },
-
-  {
     path: "admin-dashboard",
-    element: <Admin_Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Admin_Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "general-setting",
@@ -63,7 +67,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "user-role",
-        element: <User_Role></User_Role>,
+        element: <User_Role />,
       },
     ],
   },

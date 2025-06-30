@@ -1,5 +1,5 @@
 import { AiFillEye, AiFillEyeInvisible, AiFillUnlock } from "react-icons/ai";
-import { Link, useNavigate,  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { useLoginMutation } from "../../Redux/user/authApi";
@@ -10,18 +10,21 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading }] = useLoginMutation();
   const [error, setError] = useState(null);
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-   useEffect(() => {
-    const auth = localStorage.getItem("auth");
-    if (auth) {
-      const { token } = JSON.parse(auth);
-      if (token) {
-        navigate("/");
-      }
-    }
-  }, [navigate]);
-
+  // useEffect(() => {
+  //   const auth = localStorage.getItem("auth");
+  //   if (auth) {
+  //     try {
+  //       const parsedAuth = JSON.parse(auth);
+  //       if (parsedAuth?.token) {
+  //         navigate("/");
+  //       }
+  //     } catch (err) {
+  //       console.error("Failed to parse auth:", err);
+  //     }
+  //   }
+  // }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
